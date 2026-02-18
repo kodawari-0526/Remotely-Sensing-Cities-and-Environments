@@ -17,7 +17,7 @@ class: center, middle
 
 # Why Sentinel-2?
 
-### "High-resolution optical imagery for global urban monitoring1."
+### "High-resolution optical imagery for global urban monitoring."
 
 ---
 
