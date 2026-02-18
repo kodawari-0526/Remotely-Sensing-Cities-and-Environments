@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Sentinel-2: The Urban Observer</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="ZheXiang Zhou" />
+    <script src="libs/header-attrs-2.30/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Sentinel-2: The Urban Observer
+]
+.subtitle[
+## A Pitch for Sustainable City Monitoring
+]
+.author[
+### ZheXiang Zhou
+]
+.institute[
+### CASA0023
+]
+.date[
+### 2025/01/21
+]
+
+---
+
+
+class: center, middle
+
+# Why Sentinel-2?
+
+### "High-resolution optical imagery for global urban monitoring."
+
+---
+
+# The Sensor: MSI (MultiSpectral Instrument)
+
+.pull-left[
+**Key Specifications:**
+
+* **Platform:** Twin satellites (2A &amp; 2B).
+* [cite_start]**Sensor Type:** Passive Optical Sensor[cite: 534].
+* **Spatial Resolution:** * 10m (RGB + NIR)
+    * 20m (Red Edge, SWIR)
+    * 60m (Atmospheric)
+* **Revisit Time:** 5 days at the equator (high temporal resolution).
+]
+
+.pull-right[
+![Sentinel-2 Satellite](https://sentinels.copernicus.eu/documents/247904/4597424/Sentinel-2_satellite_artist_impression_1.jpg/05f25754-5267-42a1-a75d-53697e884025?t=1587560945532)
+
+.footnotesize[
+*Source: ESA/ATG medialab [1]*
+]
+]
+
+---
+
+# Why is it ideal for Cities?
+
+### 1. Open Access Data
+Unlike commercial satellites (e.g., WorldView), Sentinel-2 data is **free and open**. This reduces costs for long-term urban planning projects.
+
+### 2. The "Red Edge" Bands
+Sentinel-2 is unique because it includes specific bands in the "Red Edge" spectrum.
+
+&gt; **Application:** This is crucial for monitoring urban vegetation health (Chlorophyll content) and differentiating between parks, gardens, and concrete structures.
+
+---
+
+# Case Study: Urban Heat &amp; Green Space
+
+.pull-left[
+### The Problem
+Cities suffer from the **Urban Heat Island (UHI)** effect.
+
+### The Solution
+Using Sentinel-2's **Near-Infrared (NIR)** channel (Band 8) and **Red** channel (Band 4), we can calculate **NDVI** (Normalized Difference Vegetation Index).
+
+`$$NDVI = \frac{(NIR - Red)}{(NIR + Red)}$$`
+]
+
+.pull-right[
+![NDVI Example](https://sentinels.copernicus.eu/documents/247904/4346764/Sentinel-2-false-colour-image-Paris.jpg)
+.footnotesize[
+*False colour image of Paris. Vegetation appears red. Source: Copernicus Sentinel data (2015) / ESA [2]*
+]
+]
+
+---
+
+# Limitations &amp; Reflections
+
+[cite_start]Although Sentinel-2 is powerful, we must acknowledge constraints (as discussed in lecture [cite: 543]):
+
+* **Cloud Cover:** As a **passive sensor**, it cannot see through clouds. [cite_start]In regions like the UK, obtaining a cloud-free image can be difficult in winter[cite: 544].
+* **Spatial Resolution (10m):** While good for general zoning, it is not detailed enough to identify individual small cars or street furniture compared to 30cm commercial drone data.
+
+**Conclusion:** For broad-scale urban temporal analysis, Sentinel-2 offers the best balance of cost, coverage, and revisit time.
+
+---
+
+# References
+
+**Image Sources:**
+
+[1] European Space Agency (ESA). (n.d.). *Sentinel-2 satellite artist impression*. Retrieved from https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2
+
+[2] European Space Agency (ESA). (2015). *Sentinel-2 false colour image of Paris*. Retrieved from https://sentinels.copernicus.eu/web/sentinel/news/-/asset_publisher/xR9e/content/sentinel-2a-acquires-first-images
+
+**Literature:**
+
+[3] Drusch, M., et al. (2012). Sentinel-2: ESA's optical high-resolution mission for GMES operational services. *Remote Sensing of Environment*, 120, 25-36.
+
+[4] Phiri, D., et al. (2020). Sentinel-2 data for land cover/use mapping: A review. *Remote Sensing*, 12(14), 2291.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+---
+title: "Sentinel-2: The Urban Observer"
+subtitle: "A Pitch for Sustainable City Monitoring"
+author: "ZheXiang Zhou"
+institute: "CASA0023"
+date: "2025/01/21"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+class: center, middle
+
+# Why Sentinel-2?
+
+### "High-resolution optical imagery for global urban monitoring."
+
+---
+
+# The Sensor: MSI (MultiSpectral Instrument)
+
+.pull-left[
+**Key Specifications:**
+
+* **Platform:** Twin satellites (2A & 2B).
+* [cite_start]**Sensor Type:** Passive Optical Sensor[cite: 534].
+* **Spatial Resolution:** * 10m (RGB + NIR)
+    * 20m (Red Edge, SWIR)
+    * 60m (Atmospheric)
+* **Revisit Time:** 5 days at the equator (high temporal resolution).
+]
+
+.pull-right[
+![Sentinel-2 Satellite](https://sentinels.copernicus.eu/documents/247904/4597424/Sentinel-2_satellite_artist_impression_1.jpg/05f25754-5267-42a1-a75d-53697e884025?t=1587560945532)
+
+.footnotesize[
+*Source: ESA/ATG medialab [1]*
+]
+]
+
+---
+
+# Why is it ideal for Cities?
+
+### 1. Open Access Data
+Unlike commercial satellites (e.g., WorldView), Sentinel-2 data is **free and open**. This reduces costs for long-term urban planning projects.
+
+### 2. The "Red Edge" Bands
+Sentinel-2 is unique because it includes specific bands in the "Red Edge" spectrum.
+
+> **Application:** This is crucial for monitoring urban vegetation health (Chlorophyll content) and differentiating between parks, gardens, and concrete structures.
+
+---
+
+# Case Study: Urban Heat & Green Space
+
+.pull-left[
+### The Problem
+Cities suffer from the **Urban Heat Island (UHI)** effect.
+
+### The Solution
+Using Sentinel-2's **Near-Infrared (NIR)** channel (Band 8) and **Red** channel (Band 4), we can calculate **NDVI** (Normalized Difference Vegetation Index).
+
+$$NDVI = \frac{(NIR - Red)}{(NIR + Red)}$$
+]
+
+.pull-right[
+![NDVI Example](https://sentinels.copernicus.eu/documents/247904/4346764/Sentinel-2-false-colour-image-Paris.jpg)
+.footnotesize[
+*False colour image of Paris. Vegetation appears red. Source: Copernicus Sentinel data (2015) / ESA [2]*
+]
+]
+
+---
+
+# Limitations & Reflections
+
+[cite_start]Although Sentinel-2 is powerful, we must acknowledge constraints (as discussed in lecture [cite: 543]):
+
+* **Cloud Cover:** As a **passive sensor**, it cannot see through clouds. [cite_start]In regions like the UK, obtaining a cloud-free image can be difficult in winter[cite: 544].
+* **Spatial Resolution (10m):** While good for general zoning, it is not detailed enough to identify individual small cars or street furniture compared to 30cm commercial drone data.
+
+**Conclusion:** For broad-scale urban temporal analysis, Sentinel-2 offers the best balance of cost, coverage, and revisit time.
+
+---
+
+# References
+
+**Image Sources:**
+
+[1] European Space Agency (ESA). (n.d.). *Sentinel-2 satellite artist impression*. Retrieved from https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2
+
+[2] European Space Agency (ESA). (2015). *Sentinel-2 false colour image of Paris*. Retrieved from https://sentinels.copernicus.eu/web/sentinel/news/-/asset_publisher/xR9e/content/sentinel-2a-acquires-first-images
+
+**Literature:**
+
+[3] Drusch, M., et al. (2012). Sentinel-2: ESA's optical high-resolution mission for GMES operational services. *Remote Sensing of Environment*, 120, 25-36.
+
+[4] Phiri, D., et al. (2020). Sentinel-2 data for land cover/use mapping: A review. *Remote Sensing*, 12(14), 2291.
