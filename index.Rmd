@@ -1,103 +1,270 @@
 ---
-title: "Sentinel-2: The Urban Observer"
-subtitle: "A Pitch for Sustainable City Monitoring"
-author: "ZheXiang Zhou"
-institute: "CASA0023"
-date: "2025/01/21"
+title: "Sentinel-2 MSI for Urban Remote Sensing"
+subtitle: "CASA0023 Week 2 Learning Diary Presentation"
+author: "Zhexiang Zhou"
 output:
   xaringan::moon_reader:
     lib_dir: libs
+    css: ["default", "metropolis", "metropolis-fonts", "styles.css"]
     nature:
+      ratio: "16:9"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
 ---
 
-class: center, middle
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
 
-# Why Sentinel-2?
+class: center, middle, hero
+background-image: url("images/london_s2.jpg")
+background-size: cover
+background-position: center
 
-### "High-resolution optical imagery for global urban monitoring."
+# Sentinel-2 MSI for Urban Decisions
+## Sensor summary, real applications, and personal reflection
+
+### Focused on the CASA0023 mark scheme
 
 ---
 
-# The Sensor: MSI (MultiSpectral Instrument)
+# 1) Sensor Summary: What Sentinel-2 MSI Is
 
 .pull-left[
-**Key Specifications:**
+.img-frame[
+![Sentinel-2 mission event image](images/sentinel2a_launch.jpg)
+]
 
-* **Platform:** Twin satellites (2A & 2B).
-* [cite_start]**Sensor Type:** Passive Optical Sensor[cite: 534].
-* **Spatial Resolution:** * 10m (RGB + NIR)
-    * 20m (Red Edge, SWIR)
-    * 60m (Atmospheric)
-* **Revisit Time:** 5 days at the equator (high temporal resolution).
+.tiny-note[
+Image: ESA/J. Mai via Wikimedia Commons (CC BY-SA IGO 3.0)
+]
 ]
 
 .pull-right[
-![Sentinel-2 Satellite](https://sentinels.copernicus.eu/documents/247904/4597424/Sentinel-2_satellite_artist_impression_1.jpg/05f25754-5267-42a1-a75d-53697e884025?t=1587560945532)
+<div class="card">
+<span class="accent">Sentinel-2 MSI</span> is a passive multispectral optical sensor designed for land and urban surface monitoring.
+</div>
 
-.footnotesize[
-*Source: ESA/ATG medialab [1]*
+<ul class="tight">
+<li>13 spectral bands (VIS, red-edge, NIR, SWIR)</li>
+<li>Spatial resolution: 10 m / 20 m / 60 m</li>
+<li>Swath width: ~290 km</li>
+<li>Revisit: ~5 days with Sentinel-2A + 2B</li>
+<li>Open and free Copernicus data access</li>
+</ul>
+
+.small-note[
+Core value: frequent, open, and spectrally rich observations for city-scale analysis.
 ]
 ]
 
 ---
 
-# Why is it ideal for Cities?
-
-### 1. Open Access Data
-Unlike commercial satellites (e.g., WorldView), Sentinel-2 data is **free and open**. This reduces costs for long-term urban planning projects.
-
-### 2. The "Red Edge" Bands
-Sentinel-2 is unique because it includes specific bands in the "Red Edge" spectrum.
-
-> **Application:** This is crucial for monitoring urban vegetation health (Chlorophyll content) and differentiating between parks, gardens, and concrete structures.
-
----
-
-# Case Study: Urban Heat & Green Space
+# 2) Independent Summary: Strengths and Constraints
 
 .pull-left[
-### The Problem
-Cities suffer from the **Urban Heat Island (UHI)** effect.
-
-### The Solution
-Using Sentinel-2's **Near-Infrared (NIR)** channel (Band 8) and **Red** channel (Band 4), we can calculate **NDVI** (Normalized Difference Vegetation Index).
-
-$$NDVI = \frac{(NIR - Red)}{(NIR + Red)}$$
+### Strengths
+<div class="card">
+<ul class="tight">
+<li>Strong land-cover separability for built-up, vegetation, and water.</li>
+<li>Red-edge bands improve urban vegetation analysis.</li>
+<li>High revisit frequency supports change monitoring.</li>
+<li>Open archive enables reproducible workflows and low-cost scaling.</li>
+</ul>
+</div>
 ]
 
 .pull-right[
-![NDVI Example](https://sentinels.copernicus.eu/documents/247904/4346764/Sentinel-2-false-colour-image-Paris.jpg)
-.footnotesize[
-*False colour image of Paris. Vegetation appears red. Source: Copernicus Sentinel data (2015) / ESA [2]*
+### Constraints
+<div class="card-warm">
+<ul class="tight">
+<li>No thermal band: limited for direct land-surface temperature retrieval.</li>
+<li>Optical data quality drops under cloud and haze.</li>
+<li>10 m pixels can mix materials in dense urban blocks.</li>
+<li>Street-level object detection requires much finer resolution.</li>
+</ul>
+</div>
+]
+
+.small-note[
+Independent judgement: Sentinel-2 is excellent as a <span class="accent">baseline urban sensor</span>, and often strongest when fused with thermal or SAR data.
+]
+
+---
+
+# 3) Application Scope and Assessment Logic
+
+.pull-left[
+### Common urban uses in the literature
+<ul class="tight">
+<li><span class="accent">Land-cover classification</span> (built-up, green, water, bare land)</li>
+<li><span class="accent">Urban growth tracking</span> using multi-date scenes</li>
+<li><span class="accent">Green infrastructure mapping</span> with red-edge and NIR features</li>
+<li><span class="accent">Interpretable ML</span> for policy-facing evidence</li>
+</ul>
+]
+
+.pull-right[
+### How this presentation matches marking
+<div class="card">
+<ul class="tight">
+<li><b>Summary:</b> explain sensor capability + limits</li>
+<li><b>Application:</b> compare published case studies and purpose</li>
+<li><b>Reflection:</b> state what I learned and future use</li>
+</ul>
+</div>
+
+<div class="study-note">
+I review three peer-reviewed studies and evaluate their method choices for urban practice.
+</div>
+]
+
+---
+
+# 4) Study A: Optimized Random Forest Classification
+
+.pull-left[
+### Zhang et al. (2021), *Applied Sciences*
+
+<ul class="study">
+<li><b>Purpose:</b> improve urban land-cover classification from Sentinel-2 data.</li>
+<li><b>Method:</b> optimized Random Forest using Sentinel-2 feature sets.</li>
+<li><b>Result relevance:</b> robust accuracy can be achieved with careful feature and parameter selection.</li>
+</ul>
+
+<div class="study-note">
+My comment: good evidence for practical mapping, but transferability across different cities still needs local validation.
+</div>
+]
+
+.pull-right[
+.img-frame[
+![Sentinel-2 Chicago scene](images/chicago_s2.jpg)
+]
+
+.tiny-note[
+Image: Chicago by Sentinel-2, Copernicus attribution via Wikimedia Commons
 ]
 ]
 
 ---
 
-# Limitations & Reflections
+# 5) Study B: Spectro-Spatio-Temporal Urban Mapping
 
-[cite_start]Although Sentinel-2 is powerful, we must acknowledge constraints (as discussed in lecture [cite: 543]):
+.pull-left[
+### Xu, Heremans & Somers (2022), *Urban Informatics*
 
-* **Cloud Cover:** As a **passive sensor**, it cannot see through clouds. [cite_start]In regions like the UK, obtaining a cloud-free image can be difficult in winter[cite: 544].
-* **Spatial Resolution (10m):** While good for general zoning, it is not detailed enough to identify individual small cars or street furniture compared to 30cm commercial drone data.
+<ul class="study">
+<li><b>Purpose:</b> test spectral, spatial, and temporal strategies for urban land-cover mapping.</li>
+<li><b>Method:</b> compare single-date and time-series Sentinel-2 classifier setups.</li>
+<li><b>Result relevance:</b> combining spring and summer observations improved class discrimination.</li>
+</ul>
 
-**Conclusion:** For broad-scale urban temporal analysis, Sentinel-2 offers the best balance of cost, coverage, and revisit time.
+<div class="study-note">
+My comment: acquisition timing is not just technical detail, it directly changes classification quality.
+</div>
+]
+
+.pull-right[
+.img-frame[
+![Sentinel-2 London scene](images/london_s2.jpg)
+]
+
+.tiny-note[
+Image: London by Sentinel-2, Copernicus attribution via Wikimedia Commons
+]
+]
+
+---
+
+# 6) Study C: Interpretable Machine Learning for LULC
+
+.pull-left[
+### Hosseiny, Abdi & Jamali (2022), *RSASE*
+
+<ul class="study">
+<li><b>Purpose:</b> compare shallow and deep models for urban LULC classification.</li>
+<li><b>Method:</b> 141 features, 85 scenarios, class-level SHAP interpretation.</li>
+<li><b>Result relevance:</b> deep models achieved higher mean accuracy and clearer class-level explanations.</li>
+</ul>
+
+<div class="study-note">
+My comment: interpretability is critical when outputs are used by planners, not only technical analysts.
+</div>
+]
+
+.pull-right[
+.img-frame[
+![Sentinel-2 Manhattan scene](images/manhattan_s2.jpg)
+]
+
+.tiny-note[
+Image: Manhattan by Sentinel-2, Copernicus attribution via Wikimedia Commons
+]
+]
+
+---
+
+# 7) Cross-Study Comparison (Why It Matters)
+
+<div class="matrix">
+
+| Study | Main contribution | Practical implication |
+|:--|:--|:--|
+| Zhang et al. (2021) | Optimized RF with Sentinel-2 features | Strong baseline for fast, operational urban mapping |
+| Xu et al. (2022) | Spectro-spatio-temporal design | Scene timing and seasonal stacking improve separability |
+| Hosseiny et al. (2022) | Interpretable deep/shallow comparison | Better accuracy should be paired with explainable outputs |
+
+</div>
+
+<div class="card">
+Synthesis: Sentinel-2 works best when we combine <b>good feature design</b>, <b>time-aware data selection</b>, and <b>interpretable modelling</b>.
+</div>
+
+---
+
+# 8) Personal Reflection and Future Work
+
+<div class="card">
+I learned that sensor choice is a methodological decision, not a default. Sentinel-2 is powerful because it is open, frequent, and spectrally rich, but I must design around its optical and spatial limits.
+</div>
+
+### What I learned
+<ul class="tight">
+<li>Classification quality depends on feature selection, timing, and validation.</li>
+<li>Urban results become more useful when model outputs are interpretable.</li>
+<li>Limitations (cloud, mixed pixels, no thermal) must be explicit in analysis reporting.</li>
+</ul>
+
+### How I would use this in future work
+<ul class="tight">
+<li>Use Sentinel-2 as a baseline layer for city land-cover and vegetation dynamics.</li>
+<li>Fuse with thermal/SAR data for UHI or cloudy-season analysis.</li>
+<li>Build repeatable multi-date workflows for stronger evidence in planning contexts.</li>
+</ul>
 
 ---
 
 # References
 
-**Image Sources:**
+<div class="refs">
 
-[1] European Space Agency (ESA). (n.d.). *Sentinel-2 satellite artist impression*. Retrieved from https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2
+**Core sensor sources**
 
-[2] European Space Agency (ESA). (2015). *Sentinel-2 false colour image of Paris*. Retrieved from https://sentinels.copernicus.eu/web/sentinel/news/-/asset_publisher/xR9e/content/sentinel-2a-acquires-first-images
+- Copernicus Sentinel-2 mission page: https://sentinels.copernicus.eu/web/sentinel/missions/sentinel-2
+- Copernicus media page: https://www.copernicus.eu/en/media/images/sentinel-2-1
+- Drusch, M. et al. (2012). Sentinel-2: ESA's optical high-resolution mission for GMES operational services. *Remote Sensing of Environment*, 120, 25-36. https://doi.org/10.1016/j.rse.2011.11.026
 
-**Literature:**
+**Application studies**
 
-[3] Drusch, M., et al. (2012). Sentinel-2: ESA's optical high-resolution mission for GMES operational services. *Remote Sensing of Environment*, 120, 25-36.
+- Zhang, T. et al. (2021). Sentinel-2 Satellite Imagery for Urban Land Cover Classification by Optimized Random Forest Classifier. *Applied Sciences*, 11(2), 543. https://doi.org/10.3390/app11020543
+- Xu, F., Heremans, S., & Somers, B. (2022). Urban land cover mapping with Sentinel-2: a spectro-spatio-temporal analysis. *Urban Informatics*, 1, 8. https://doi.org/10.1007/s44212-022-00008-y
+- Hosseiny, B., Abdi, A. M., & Jamali, S. (2022). Urban land use and land cover classification with interpretable machine learning: A case study using Sentinel-2 and auxiliary data. *Remote Sensing Applications: Society and Environment*, 28, 100843. https://doi.org/10.1016/j.rsase.2022.100843
 
-[4] Phiri, D., et al. (2020). Sentinel-2 data for land cover/use mapping: A review. *Remote Sensing*, 12(14), 2291.
+**Image credits**
+
+- ESA/J. Mai (Sentinel-2A launch at ESOC), via Wikimedia Commons.
+- Copernicus Sentinel-2 imagery (Chicago, London, Manhattan), via Wikimedia Commons.
+
+</div>
