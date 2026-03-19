@@ -25,7 +25,7 @@ background-position: center
 # Sentinel-2 MSI for Urban Decisions
 ## Sensor summary, real applications, and personal reflection
 
-### Focused on the CASA0023 mark scheme
+
 
 ---
 
